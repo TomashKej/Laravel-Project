@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    color: #222;
+}
+
+header {
+    background: #1f2937;
+    color: white;
+    padding: 18px 40px;
+}
+
+nav {
+    background: #374151;
+    padding: 12px 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #f3f4f6;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 9px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.error {
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    margin: 0;
+}
+
+.search-box button,
+.search-box a {
+    white-space: nowrap;
+}
+
+.page-actions {
+    margin-bottom: 20px;
+}
+
+.search-form {
+    margin-top: 20px;
+}
+
+.inline-form {
+    margin: 0;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #e5e7eb;
+    margin: 2px;
+    font-size: 13px;
+}
