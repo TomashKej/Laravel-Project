@@ -59,7 +59,7 @@ class ServiceItemController extends Controller
     {
         $this->service->addNew($request);
 
-        return redirect('/serviceItems');
+        return redirect('/serviceItems')->with('success', 'Service item has been created successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class ServiceItemController extends Controller
     {
         $this->service->update($request, $id);
 
-        return redirect('/serviceItems');
+        return redirect('/serviceItems')->with('success', 'Service item has been updated successfully.');
     }
 
     /**
@@ -103,6 +103,6 @@ class ServiceItemController extends Controller
     {
         $this->service->deactivate($id);
 
-        return redirect('/serviceItems');
+        return redirect('/serviceItems')->with('success', 'Service item has been deactivated successfully.');
     }
 }

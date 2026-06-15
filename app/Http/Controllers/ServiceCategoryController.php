@@ -55,7 +55,7 @@ class ServiceCategoryController extends Controller
     {
         $this->service->addNew($request);
 
-        return redirect('/service-categories');
+        return redirect('/serviceCategories')->with('success', 'Service category has been created successfully.');
     }
 
     /**
@@ -84,7 +84,7 @@ class ServiceCategoryController extends Controller
     {
         $this->service->update($request, $id);
 
-        return redirect('/service-categories');
+        return redirect('/serviceCategories')->with('success', 'Service category has been updated successfully.');
     }
 
     /**
@@ -97,6 +97,6 @@ class ServiceCategoryController extends Controller
     {
         $this->service->deactivate($id);
 
-        return redirect('/service-categories');
+        return redirect('/serviceCategories')->with('success', 'Service category has been deactivated successfully.');
     }
 }

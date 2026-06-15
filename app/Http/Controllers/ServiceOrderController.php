@@ -59,7 +59,7 @@ class ServiceOrderController extends Controller
     {
         $this->service->addNew($request);
 
-        return redirect('/serviceOrders');
+        return redirect('/serviceOrders')->with('success', 'Service order has been created successfully.');
     }
 
     /**
@@ -81,6 +81,18 @@ class ServiceOrderController extends Controller
     }
 
     /**
+     * Display details
+     */
+    public function Details(int $id)
+{
+    $serviceOrder = $this->service->getById($id);
+
+    return view('serviceOrders.details', [
+        'model' => $serviceOrder,
+    ]);
+}
+
+    /**
      * Handles the submission of the edit service order form and updates the existing service order.
      *
      * @param Request $request The HTTP request containing form data.
@@ -91,7 +103,7 @@ class ServiceOrderController extends Controller
     {
         $this->service->update($request, $id);
 
-        return redirect('/serviceOrders');
+        return redirect('/serviceOrders')->with('success', 'Service order has been updated successfully.');
     }
 
     /**
@@ -104,6 +116,6 @@ class ServiceOrderController extends Controller
     {
         $this->service->deactivate($id);
 
-        return redirect('/serviceOrders');
+        return redirect('/serviceOrders')->with('success', 'Service order has been deactivated successfully.');
     }
 }

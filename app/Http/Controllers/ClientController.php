@@ -53,8 +53,8 @@ class ClientController extends Controller
     public function Store(Request $request)
     {
         $this->clientService->addNew($request);
-
-        return redirect('/clients');
+        
+        return redirect('/clients')->with('success', 'Client has been created successfully.');
     }
 
     /**
@@ -83,7 +83,7 @@ class ClientController extends Controller
     {
         $this->clientService->update($request, $id);
 
-        return redirect('/clients');
+        return redirect('/clients')->with('success', 'Client has been updated successfully.');
     }
 
     /**
@@ -96,6 +96,6 @@ class ClientController extends Controller
     {
         $this->clientService->deactivate($id);
 
-        return redirect('/clients');
+        return redirect('/clients')->with('success', 'Client has been deactivated successfully.');
     }
 }

@@ -51,7 +51,7 @@ class EmployeeController extends Controller
     {
         $this->EmployeeService->addNew($request);
 
-        return redirect('/employees');
+        return redirect('/employees')->with('success', 'Employee has been created successfully.');
     }
 
     /**
@@ -80,7 +80,7 @@ class EmployeeController extends Controller
     {
         $this->EmployeeService->update($request, $id);
 
-        return redirect('/employees');
+        return redirect('/employees')->with('success', 'Employee has been updated successfully.');
     }
 
     /**
@@ -93,6 +93,6 @@ class EmployeeController extends Controller
     {
         $this->EmployeeService->deactivate($id);
 
-        return redirect('/employees');
+        return redirect('/employees')->with('success', 'Employee has been deactivated successfully.');
     }
 }

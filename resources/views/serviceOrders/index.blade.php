@@ -27,6 +27,7 @@
             <th>Deadline</th>
             <th>Employees</th>
             <th>Services</th>
+            <th>Total Cost</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -61,7 +62,16 @@
                 </td>
 
                 <td>
+                    £{{ number_format($order->serviceItems->sum('Price'), 2) }}
+                </td>
+
+                <td>
                     <div class="actions">
+
+                        <a href="/serviceOrders/details/{{ $order->Id }}" class="btn btn-primary btn-small">
+                            Details
+                        </a>
+
                         <a href="/serviceOrders/edit/{{ $order->Id }}" class="btn btn-secondary btn-small">
                             Edit
                         </a>

@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!----- Head section ----->
-    <head>
-        <meta charset="UTF-8">
-        <title>Service Order Management System</title>
-    
-        <link rel="stylesheet" href="{{ asset('css/site.css') }}">
-    </head>
-    
-    <!----- Body section ----->
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Service Order Management System</title>
 
-        <header>
-            <h2>Service Order Management System</h2>
-        </header>
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}">
+</head>
 
-        <!----- Navigation ----->
-        <nav>
-            <a href="/">Home</a>
-            <a href="/clients">Clients</a>
-            <a href="/employees">Employees</a>
-            <a href="/serviceCategories">Service Categories</a>
-            <a href="/serviceItems">Service Items</a>
-            <a href="/serviceOrders">Service Orders</a>
+<body class="@yield('bodyClass')">
 
-        </nav>
+@include('shared.header')
+@include('shared.navbar')
 
-        <!----- Main content ----->
-        <main>
-            @yield('content')
-        </main>
+<main>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    </body>
+    @if(session('error'))
+        <div class="alert alert-error">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @yield('content')
+</main>
+
+@include('shared.footer')
+
+</body>
 </html>
