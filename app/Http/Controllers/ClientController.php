@@ -73,6 +73,18 @@ class ClientController extends Controller
     }
 
     /**
+     * Dispplay the client details
+     */
+    public function Details(int $id)
+{
+    $client = $this->clientService->getById($id);
+
+    return view('clients.details', [
+        'model' => $client,
+    ]);
+}
+
+    /**
      * Update the specified client in storage.
      *
      * @param Request $request

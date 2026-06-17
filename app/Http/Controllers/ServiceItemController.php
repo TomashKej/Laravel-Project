@@ -79,6 +79,14 @@ class ServiceItemController extends Controller
         ]);
     }
 
+
+    public function Details(int $id)
+    {
+        $serviceItem = $this->service->getById($id);
+
+        return view('serviceItems.details', ['model' => $serviceItem]);
+    }
+
     /**
      * Handles the submission of the edit service item form.
      *

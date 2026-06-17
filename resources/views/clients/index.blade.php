@@ -48,6 +48,11 @@
                 <td>{{ $client->PostCode }}</td>
                 <td>
                     <div class="actions">
+
+                        <a href="/clients/details/{{ $client->Id }}" class="btn btn-primary btn-small">
+                            Details
+                        </a>
+
                         <a href="/clients/edit/{{ $client->Id }}" class="btn btn-secondary btn-small">
                             Edit
                         </a>

@@ -41,6 +41,11 @@ It also includes a search form to filter the service items based on user input.
                 <td>{{ $serviceItem->Description }}</td>
                 <td>
                     <div class="actions">
+
+                        <a href="/serviceItems/details/{{ $serviceItem->Id }}" class="btn btn-primary btn-small">
+                            Details
+                        </a>
+
                         <a href="/serviceItems/edit/{{ $serviceItem->Id }}" class="btn btn-secondary btn-small">
                             Edit
                         </a>

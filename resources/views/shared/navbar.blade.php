@@ -1,20 +1,25 @@
 <nav>
     <div class="nav-left">
 
+        <a href="/">Home</a>
+
         @auth
-            <a href="/">Home</a>
             <a href="/clients">Clients</a>
             <a href="/employees">Employees</a>
             <a href="/serviceCategories">Service Categories</a>
             <a href="/serviceItems">Service Items</a>
             <a href="/serviceOrders">Service Orders</a>
+
+            @if(Auth::user()->IsAdmin)
+                <a href="/admin/users">Admin Panel</a>
+            @endif
         @endauth
     </div>
 
     <div class="nav-right">
         @auth
             <span class="nav-user">
-                {{ Auth::user()->name }}
+                Logged In User: {{ Auth::user()->name }}
             </span>
 
             <form method="POST" action="/logout" class="nav-form">
@@ -25,7 +30,7 @@
 
         @guest
             <a href="/login">Login</a>
-            <a href="/register">Register</a>
+            <a href="/forgotPassword">Forgot Password</a>
         @endguest
     </div>
 </nav>

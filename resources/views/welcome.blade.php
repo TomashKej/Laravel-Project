@@ -15,7 +15,7 @@
 
         <div class="page-actions">
             <a href="/login" class="btn btn-primary">Login</a>
-            <a href="/register" class="btn btn-secondary">Register</a>
+            <a href="/forgotPassword" class="btn btn-secondary">Forgot Password</a>
         </div>
     </div>
 @endguest

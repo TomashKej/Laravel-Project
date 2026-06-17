@@ -48,7 +48,7 @@ class ServiceItemService
      */
     public function getById(int $id): ServiceItem
     {
-        return ServiceItem::findOrFail($id);
+        return ServiceItem::with(['serviceCategory', 'serviceOrders.client'])->findOrFail($id);
     }
 
     /**

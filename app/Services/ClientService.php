@@ -47,7 +47,7 @@ class ClientService
      */
     public function getById(int $id): Client
     {
-        return Client::findOrFail($id);
+        return Client::with(['serviceOrders.serviceItems', 'serviceOrders.employees'])->findOrFail($id);
     }
 
     /**
