@@ -23,7 +23,7 @@
         @enderror
 
         <button type="submit" class="btn btn-primary">Login</button>
-        <a href="/register" class="btn btn-secondary">Register</a>
+
     </form>
 </div>
 

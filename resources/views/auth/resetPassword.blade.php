@@ -19,7 +19,7 @@
         <input type="text" value="{{ $securityQuestion }}" disabled>
 
         <label>Security Answer</label>
-        <input type="text" name="SecurityAnswer" value="{{ old('SecurityAnswer') }}">
+        <input type="password" name="SecurityAnswer" value="{{ old('SecurityAnswer') }}">
 
         @error('SecurityAnswer')
             <div class="error">{{ $message }}</div>
