@@ -9,10 +9,7 @@ use App\Http\Controllers\ServiceItemController;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-
-
-//Route::get("/internal-events", [InternalEventController::class, "Index"]);
-//Route::match(["get", "post"], "/tasks", [TaskController::class, "Index"]); 
+use App\Http\Controllers\PositionController;
 
 /* --------- Home --------- */
 Route::get("/", [HomeController::class, "index"]);
@@ -33,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/employees/create', [EmployeeController::class, 'Create']);
     Route::post('/employees/create', [EmployeeController::class, 'Store']);
     Route::get('/employees/edit/{id}', [EmployeeController::class, 'Edit']);
+    Route::get('/employees/details/{id}', [EmployeeController::class, 'Details']);
     Route::post('/employees/edit/{id}', [EmployeeController::class, 'Update']);
     Route::post('/employees/delete/{id}', [EmployeeController::class, 'Delete']);
 
@@ -41,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/serviceCategories/create', [ServiceCategoryController::class, 'Create']);
     Route::post('/serviceCategories/create', [ServiceCategoryController::class, 'Store']);
     Route::get('/serviceCategories/edit/{id}', [ServiceCategoryController::class, 'Edit']);
+    Route::get('/serviceCategories/details/{id}', [ServiceCategoryController::class, 'Details']);
     Route::post('/serviceCategories/edit/{id}', [ServiceCategoryController::class, 'Update']);
     Route::post('/serviceCategories/delete/{id}', [ServiceCategoryController::class, 'Delete']);
 
@@ -74,7 +73,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/users/makeAdmin/{id}', [AdminController::class, 'MakeAdmin']);
     Route::post('/admin/users/removeAdmin/{id}', [AdminController::class, 'RemoveAdmin']);
 
+    /* --------- Positions --------- */
+    Route::get('/positions', [PositionController::class, 'Index']);
+    Route::get('/positions/create', [PositionController::class, 'Create']);
+    Route::post('/positions/create', [PositionController::class, 'Store']);
+    Route::get('/positions/details/{id}', [PositionController::class, 'Details']);
+    Route::get('/positions/edit/{id}', [PositionController::class, 'Edit']);
+    Route::post('/positions/edit/{id}', [PositionController::class, 'Update']);
+    Route::post('/positions/delete/{id}', [PositionController::class, 'Delete']);
 });
+
 /* --------- Authorisation --------- */
 //Route::get('/register', [AuthController::class, 'Register']);
 //Route::post('/register', [AuthController::class, 'StoreRegister']);

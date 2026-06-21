@@ -18,44 +18,56 @@ use Illuminate\Validation\Rule;
 class ServiceOrderService
 {
     /**
-     * Retrieves all active service orders, optionally filtered by a search term.
-     *
-     * @param string|null $search The search term to filter service orders.
-     * @return Collection The collection of active service orders.
-     */
-    public function getAll(?string $search = null): Collection
+    * Retrieves active service orders with their related data.
+    *
+    * The method supports optional filtering by search term, order status
+    * and start date range. It also loads related client, employees and service items.
+    *
+    * @param string|null $search The search term used to filter service orders.
+    * @param string|null $status The selected status used to filter service orders.
+    * @param string|null $dateFrom The start date filter.
+    * @param string|null $dateTo The end date filter.
+    * @return \Illuminate\Database\Eloquent\Collection The collection of filtered active service orders.
+    */
+    public function getAll($search = null, $status = null, $dateFrom = null, $dateTo = null)
     {
-        // Build the query to retrieve active service orders with related client, employees, and service items
-        $query = ServiceOrder::with(['client', 'employees', 'serviceItems'])
-            ->where('IsActive', true);
+        $query = ServiceOrder::with(['client', 'employees', 'serviceItems'])->where('IsActive', true);
 
-        // Apply search filters if a search term is provided
         if ($search != null && $search != '') {
             $query->where(function ($q) use ($search) {
                 $q->where('Title', 'like', '%' . $search . '%')
-                    ->orWhere('Status', 'like', '%' . $search . '%')
                     ->orWhere('Description', 'like', '%' . $search . '%')
+                    ->orWhere('Status', 'like', '%' . $search . '%')
                     ->orWhereHas('client', function ($clientQuery) use ($search) {
                         $clientQuery->where('FirstName', 'like', '%' . $search . '%')
                             ->orWhere('LastName', 'like', '%' . $search . '%')
                             ->orWhere('Email', 'like', '%' . $search . '%');
                     })
-                    // Search in related employees and service items
                     ->orWhereHas('employees', function ($employeeQuery) use ($search) {
                         $employeeQuery->where('FirstName', 'like', '%' . $search . '%')
-                            ->orWhere('LastName', 'like', '%' . $search . '%')
-                            ->orWhere('Position', 'like', '%' . $search . '%');
+                            ->orWhere('LastName', 'like', '%' . $search . '%');
                     })
-                    // Search in related service items
                     ->orWhereHas('serviceItems', function ($serviceItemQuery) use ($search) {
                         $serviceItemQuery->where('Title', 'like', '%' . $search . '%');
                     });
             });
         }
 
-        return $query->get();
-    }
+        if ($status != null && $status != '') {
+            $query->where('Status', $status);
+        }
 
+        if ($dateFrom != null && $dateFrom != '') {
+            $query->whereDate('StartDateTime', '>=', $dateFrom);
+        }
+
+        if ($dateTo != null && $dateTo != '') {
+            $query->whereDate('StartDateTime', '<=', $dateTo);
+        }
+
+        return $query->orderBy('StartDateTime')->get();
+    }
+    
     /**
      * Retrieves a service order by its ID, including related client, employees, and service items.
      *

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Employee extends Model
@@ -17,6 +18,7 @@ class Employee extends Model
         'Email',
         'Phone',
         'Position',
+        'PositionId',
         'Notes',
         'IsActive',
         'CreationDateTime',
@@ -26,6 +28,11 @@ class Employee extends Model
         'DeletedByUserId',
         'DeletedDateTime',
     ];
+
+    public function position() : BelongsTo
+    {
+        return $this->belongsTo(Position::class, 'PositionId', 'Id');
+    }
 
     public function serviceOrders(): BelongsToMany
     {

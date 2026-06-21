@@ -11,14 +11,40 @@
 
 <form method="GET" action="/serviceOrders" class="search-form">
     <div class="search-box">
-        <input type="text" name="search" placeholder="Search service orders..." value="{{ $search ?? '' }}">
+        <input type="text"
+               name="search"
+               placeholder="Search by title, client, employee or service..."
+               value="{{ $search ?? '' }}">
+
+        <select name="status">
+            <option value="">All statuses</option>
+            <option value="New" {{ ($status ?? '') == 'New' ? 'selected' : '' }}>New</option>
+            <option value="In Progress" {{ ($status ?? '') == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+            <option value="Completed" {{ ($status ?? '') == 'Completed' ? 'selected' : '' }}>Completed</option>
+            <option value="Cancelled" {{ ($status ?? '') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+        </select>
+
+        <div class="filter-field">
+            <label>From</label>
+            <input type="date"
+                   name="dateFrom"
+                   value="{{ $dateFrom ?? '' }}">
+        </div>
+
+        <div class="filter-field">
+            <label>To</label>
+            <input type="date"
+                   name="dateTo"
+                   value="{{ $dateTo ?? '' }}">
+        </div>
+
         <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/serviceOrders" class="btn btn-secondary">Clear</a>
+        <a href="/serviceOrders" class="btn btn-secondary btn-clear">Clear</a>
     </div>
 </form>
 
 <!-- This section displays a table of service orders with their details and actions. -->
-<table>
+<table class="data-table service-orders-table">
     <thead>
         <tr>
             <th>Title</th>

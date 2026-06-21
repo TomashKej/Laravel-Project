@@ -38,7 +38,7 @@ class EmployeeController extends Controller
      */
     public function Create()
     {
-        return view('employees.create');
+        return view('employees.create', ['positions' => $this->EmployeeService->getActivePositions(),]);
     }
 
     /**
@@ -65,6 +65,16 @@ class EmployeeController extends Controller
         $employee = $this->EmployeeService->getById($id);
 
         return view('employees.edit', [
+            'model' => $employee,
+            'positions' => $this->EmployeeService->getActivePositions(),
+        ]);
+    }
+
+    public function Details(int $id)
+    {
+        $employee = $this->EmployeeService->getById($id);
+
+        return view('employees.details', [
             'model' => $employee,
         ]);
     }

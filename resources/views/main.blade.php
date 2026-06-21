@@ -10,8 +10,9 @@
 
 <body class="@yield('bodyClass')">
 
-@include('shared.header')
-@include('shared.navbar')
+<x-header/>
+<x-navbar/>
+
 
 <main>
     @if(session('success'))
@@ -29,7 +30,7 @@
     @yield('content')
 </main>
 
-@include('shared.footer')
+<x-footer/>
 
 </body>
 </html>

@@ -10,10 +10,10 @@
 </div>
 
 <form method="GET" action="/employees" class="search-form">
-    <div class="search-box">
+    <div class="search-box employees-search-box">
         <input type="text" name="search" placeholder="Search employees..." value="{{ $search ?? '' }}">
         <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/employees" class="btn btn-secondary">Clear</a>
+        <a href="/employees" class="btn btn-clear">Clear</a>
     </div>
 </form>
 
@@ -37,9 +37,14 @@
                 <td>{{ $employee->LastName }}</td>
                 <td>{{ $employee->Email }}</td>
                 <td>{{ $employee->Phone }}</td>
-                <td>{{ $employee->Position }}</td>
+                <td>{{ $employee->position->Title ?? $employee->Position }}</td>
                 <td>
                     <div class="actions">
+
+                        <a href="/employees/details/{{ $employee->Id }}" class="btn btn-primary btn-small">
+                            Details
+                        </a>
+
                         <a href="/employees/edit/{{ $employee->Id }}" class="btn btn-secondary btn-small">
                             Edit
                         </a>

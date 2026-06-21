@@ -32,7 +32,7 @@ nav a:hover {
 
 main {
     flex: 1;
-    max-width: 1100px;
+    max-width: 1250px;
     width: 100%;
     box-sizing: border-box;
     margin: 30px auto;
@@ -420,6 +420,239 @@ footer p {
     margin: 0;
 }
 
+.search-box {
+    flex-wrap: wrap;
+    align-items: end;
+}
+
+.search-box select,
+.search-box input[type="date"] {
+    margin: 0;
+}
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.filter-field label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #374151;
+}
+
+.search-form {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.search-box input,
+.search-box select {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.search-box > input[type="text"] {
+    flex: 1;
+    min-width: 260px;
+}
+
+.search-box > select {
+    width: 180px;
+    min-width: 180px;
+}
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.filter-field label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #374151;
+}
+
+.filter-field input[type="date"] {
+    width: 150px;
+    margin: 0;
+}
+
+.search-box button,
+.search-box a {
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.search-box .btn {
+    margin: 0;
+}
+
+.btn-clear {
+    background: #e5e7eb;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.btn-clear:hover {
+    background: #d1d5db;
+    text-decoration: none;
+}
+
+/* Service Orders filters */
+
+.search-form {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    display: grid;
+    grid-template-columns: 1.8fr 180px 150px 150px auto auto;
+    gap: 14px;
+    align-items: end;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.search-box input,
+.search-box select {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-field label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #374151;
+}
+
+.search-box .btn {
+    height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.btn-clear {
+    background: #e5e7eb;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.btn-clear:hover {
+    background: #d1d5db;
+    text-decoration: none;
+}
+
+/* Service Orders table */
+
+.data-table {
+    font-size: 14px;
+}
+
+.data-table th,
+.data-table td {
+    vertical-align: top;
+}
+
+.service-orders-table th,
+.service-orders-table td {
+    padding: 12px 10px;
+}
+
+.service-orders-table th:nth-child(1),
+.service-orders-table td:nth-child(1) {
+    min-width: 130px;
+}
+
+.service-orders-table th:nth-child(4),
+.service-orders-table td:nth-child(4) {
+    min-width: 125px;
+}
+
+.service-orders-table th:nth-child(7),
+.service-orders-table td:nth-child(7) {
+    min-width: 85px;
+    white-space: nowrap;
+}
+
+.service-orders-table th:nth-child(8),
+.service-orders-table td:nth-child(8) {
+    min-width: 155px;
+}
+
+.service-orders-table .badge {
+    display: inline-block;
+    max-width: 130px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.service-orders-table .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.service-orders-table .btn-small {
+    padding: 6px 10px;
+}
+
+.search-box .btn-clear {
+    box-sizing: border-box;
+    height: 39px;
+    padding: 0 12px;
+    min-width: auto;
+    width: auto;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid #d1d5db;
+}
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search-box .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+}
 @media (max-width: 900px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -73,6 +73,16 @@ class ServiceCategoryController extends Controller
         ]);
     }
 
+
+    public function Details(int $id)
+    {
+        $serviceCategory = $this->service->getById($id);
+
+        return view('serviceCategories.details', [
+            'model' => $serviceCategory
+        ]);
+    }
+
     /**
      * Update the specified service category in storage.
      *

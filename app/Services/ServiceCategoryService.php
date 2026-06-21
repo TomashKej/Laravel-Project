@@ -42,7 +42,7 @@ class ServiceCategoryService
      */
     public function getById(int $id): ServiceCategory
     {
-        return ServiceCategory::findOrFail($id);
+        return ServiceCategory::with(['serviceItems.serviceOrders'])->findOrFail($id);
     }
 
     /**

@@ -58,6 +58,143 @@
         </p>
     </div>
 
+    <h2>Today's Service Orders</h2>
+
+    @if($todayOrders->count() > 0)
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>Deadline</th>
+                    <th>Total Cost</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                @foreach($todayOrders as $order)
+                    <tr>
+                        <td>{{ $order->Title }}</td>
+    
+                        <td>
+                            {{ $order->client->FirstName ?? '' }}
+                            {{ $order->client->LastName ?? '' }}
+                        </td>
+    
+                        <td>{{ $order->Status }}</td>
+                        <td>{{ $order->StartDateTime }}</td>
+                        <td>{{ $order->Deadline }}</td>
+    
+                        <td>
+                            £{{ number_format($order->serviceItems->sum('Price'), 2) }}
+                        </td>
+    
+                        <td>
+                            <a href="/serviceOrders/details/{{ $order->Id }}" class="btn btn-primary btn-small">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No service orders scheduled for today.</p>
+    @endif
+    
+    <h2>Upcoming Deadlines</h2>
+    
+    @if($upcomingDeadlineOrders->count() > 0)
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Total Cost</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                @foreach($upcomingDeadlineOrders as $order)
+                    <tr>
+                        <td>{{ $order->Title }}</td>
+    
+                        <td>
+                            {{ $order->client->FirstName ?? '' }}
+                            {{ $order->client->LastName ?? '' }}
+                        </td>
+    
+                        <td>{{ $order->Status }}</td>
+                        <td>{{ $order->Deadline }}</td>
+    
+                        <td>
+                            £{{ number_format($order->serviceItems->sum('Price'), 2) }}
+                        </td>
+    
+                        <td>
+                            <a href="/serviceOrders/details/{{ $order->Id }}" class="btn btn-primary btn-small">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No upcoming deadlines in the next 7 days.</p>
+    @endif
+    
+    <h2>Overdue Service Orders</h2>
+    
+    @if($overdueOrders->count() > 0)
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Total Cost</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                @foreach($overdueOrders as $order)
+                    <tr>
+                        <td>{{ $order->Title }}</td>
+    
+                        <td>
+                            {{ $order->client->FirstName ?? '' }}
+                            {{ $order->client->LastName ?? '' }}
+                        </td>
+    
+                        <td>{{ $order->Status }}</td>
+                        <td>{{ $order->Deadline }}</td>
+    
+                        <td>
+                            £{{ number_format($order->serviceItems->sum('Price'), 2) }}
+                        </td>
+    
+                        <td>
+                            <a href="/serviceOrders/details/{{ $order->Id }}" class="btn btn-primary btn-small">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No overdue service orders.</p>
+    @endif
+
     <h2>Orders by Status</h2>
 
     <div class="dashboard-grid">

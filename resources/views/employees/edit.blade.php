@@ -33,10 +33,21 @@
     @enderror
 
     <label>Position</label>
-    <input type="text" name="Position" value="{{ old('Position', $model->Position) }}">
-    @error('Position')
-        <div class="error">{{ $message }}</div>
-    @enderror
+
+    <select name="PositionId">
+        <option value="">Select position</option>
+    
+        @foreach($positions as $position)
+            <option value="{{ $position->Id }}"
+                {{ old('PositionId', $model->PositionId) == $position->Id ? 'selected' : '' }}>
+                {{ $position->Title }}
+            </option>
+        @endforeach
+    </select>
+
+@error('PositionId')
+    <div class="error">{{ $message }}</div>
+@enderror
 
     <label>Notes</label>
     <textarea name="Notes">{{ old('Notes', $model->Notes) }}</textarea>

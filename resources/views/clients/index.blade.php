@@ -17,7 +17,7 @@
     <div class="search-box">
         <input type="text" name="search" placeholder="Search clients..." value="{{ $search ?? '' }}">
         <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/clients" class="btn btn-secondary">Clear</a>
+        <a href="/clients" class="btn btn-clear">Clear</a>
     </div>
 </form>
 

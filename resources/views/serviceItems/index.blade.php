@@ -16,7 +16,7 @@ It also includes a search form to filter the service items based on user input.
     <div class="search-box">
         <input type="text" name="search" placeholder="Search service items..." value="{{ $search ?? '' }}">
         <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/serviceItems" class="btn btn-secondary">Clear</a>
+        <a href="/serviceItems" class="btn btn-clear">Clear</a>
     </div>
 </form>
 

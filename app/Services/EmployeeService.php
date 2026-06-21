@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Models\Position;
 
 /**
  * Service class for managing Employee entities.
@@ -21,7 +22,7 @@ class EmployeeService
      */
     public function getAll(?string $search = null): Collection
     {
-        $query = Employee::where('IsActive', true);
+        $query = Employee::with('position')->where('IsActive', true);
 
         if ($search != null && $search != '') {
             $query->where(function ($q) use ($search) {
@@ -44,7 +45,7 @@ class EmployeeService
      */
     public function getById(int $id): Employee
     {
-        return Employee::findOrFail($id);
+        return Employee::with(['position', 'serviceOrders.client', 'serviceOrders.serviceItems'])->findOrFail($id);
     }
 
     /**
@@ -59,8 +60,8 @@ class EmployeeService
             'FirstName' => ['required', 'min:2', 'max:64', "regex:/^[\pL\s'-]+$/u"],
             'LastName' => ['required', 'min:2', 'max:64', "regex:/^[\pL\s'-]+$/u"],
             'Email' => ['required', 'email', 'max:128', Rule::unique('employees', 'Email')],
-            'Phone' => ['required', 'min:7', 'max:32'],
-            'Position' => ['required', 'min:2', 'max:64'],
+            'Phone' => ['required', 'min:7', 'max:32', "regex:/^[0-9+\s()-]+$/"],
+            'PositionId' => ['required', 'exists:positions,Id'],
             'Notes' => ['nullable', 'max:1000'],
         ]);
 
@@ -71,7 +72,9 @@ class EmployeeService
         $employee->LastName = $request->input('LastName');
         $employee->Email = $request->input('Email');
         $employee->Phone = $request->input('Phone');
-        $employee->Position = $request->input('Position');
+        $position = Position::findOrFail($request->input('PositionId'));
+        $employee->PositionId = $position->Id;
+        $employee->Position = $position->Title;
         $employee->Notes = $request->input('Notes');
         $employee->IsActive = true;
         $employee->CreationDateTime = now();
@@ -94,14 +97,9 @@ class EmployeeService
         $request->validate([
             'FirstName' => ['required', 'min:2', 'max:64', "regex:/^[\pL\s'-]+$/u"],
             'LastName' => ['required', 'min:2', 'max:64', "regex:/^[\pL\s'-]+$/u"],
-            'Email' => [
-                'required',
-                'email',
-                'max:128',
-                Rule::unique('employees', 'Email')->ignore($id, 'Id'),
-            ],
-            'Phone' => ['required', 'min:7', 'max:32'],
-            'Position' => ['required', 'min:2', 'max:64'],
+            'Email' => ['required', 'email', 'max:128',Rule::unique('employees', 'Email')->ignore($id, 'Id'),],
+            'Phone' => ['required', 'min:7', 'max:32', "regex:/^[0-9+\s()-]+$/"],
+            'PositionId' => ['required', 'exists:positions,Id'],
             'Notes' => ['nullable', 'max:1000'],
         ]);
 
@@ -112,7 +110,9 @@ class EmployeeService
         $employee->LastName = $request->input('LastName');
         $employee->Email = $request->input('Email');
         $employee->Phone = $request->input('Phone');
-        $employee->Position = $request->input('Position');
+        $position = Position::findOrFail($request->input('PositionId'));
+        $employee->PositionId = $position->Id;
+        $employee->Position = $position->Title;
         $employee->Notes = $request->input('Notes');
         $employee->EditDateTime = now();
         $employee->UpdatedByUserId = $userId;
@@ -136,4 +136,12 @@ class EmployeeService
 
         $employee->save();
     }
+
+    public function getActivePositions()
+    {
+        return Position::where('IsActive', true)
+            ->orderBy('Title')
+            ->get();
+    }
+
 }

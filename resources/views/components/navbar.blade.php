@@ -6,10 +6,12 @@
         @auth
             <a href="/clients">Clients</a>
             <a href="/employees">Employees</a>
+            <a href="/positions">Positions</a>
             <a href="/serviceCategories">Service Categories</a>
             <a href="/serviceItems">Service Items</a>
             <a href="/serviceOrders">Service Orders</a>
 
+            
             @if(Auth::user()->IsAdmin)
                 <a href="/admin/users">Admin Panel</a>
             @endif

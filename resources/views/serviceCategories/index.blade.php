@@ -15,7 +15,7 @@
     <div class="search-box">
         <input type="text" name="search" placeholder="Search categories..." value="{{ $search ?? '' }}">
         <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/serviceCategories" class="btn btn-secondary">Clear</a>
+        <a href="/serviceCategories" class="btn btn-clear">Clear</a>
     </div>
 </form>
 
@@ -36,6 +36,11 @@
                 <td>{{ $category->Description }}</td>
                 <td>
                     <div class="actions">
+
+                        <a href="/serviceCategories/details/{{ $category->Id }}" class="btn btn-primary btn-small">
+                            Details
+                        </a>
+
                         <a href="/serviceCategories/edit/{{ $category->Id }}" class="btn btn-secondary btn-small">
                             Edit
                         </a>
