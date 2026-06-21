@@ -1,126 +1,321 @@
 @extends('main')
 
+@section('title', 'Service Orders')
+
 @section('content')
 
-<h1>Service Orders</h1>
+<section class="list-page-header">
+    <div class="list-page-heading">
+        <span class="section-label">
+            Order Management
+        </span>
 
-<!-- This section displays a button to add a new service order and a search form for filtering service orders. -->
-<div class="page-actions">
-    <a href="/serviceOrders/create" class="btn btn-primary">Add Service Order</a>
-</div>
+        <h1>Service Orders</h1>
 
-<form method="GET" action="/serviceOrders" class="search-form">
+        <p>
+            Manage customer service orders, assigned employees,
+            selected services, deadlines and order statuses.
+        </p>
+    </div>
+
+    <div class="list-page-actions">
+        <a
+            href="/serviceOrders/create"
+            class="btn btn-primary"
+        >
+            Add New Service Order
+        </a>
+    </div>
+</section>
+
+
+<form
+    method="GET"
+    action="/serviceOrders"
+    class="search-form"
+>
     <div class="search-box">
-        <input type="text"
-               name="search"
-               placeholder="Search by title, client, employee or service..."
-               value="{{ $search ?? '' }}">
-
-        <select name="status">
-            <option value="">All statuses</option>
-            <option value="New" {{ ($status ?? '') == 'New' ? 'selected' : '' }}>New</option>
-            <option value="In Progress" {{ ($status ?? '') == 'In Progress' ? 'selected' : '' }}>In Progress</option>
-            <option value="Completed" {{ ($status ?? '') == 'Completed' ? 'selected' : '' }}>Completed</option>
-            <option value="Cancelled" {{ ($status ?? '') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
-        </select>
-
         <div class="filter-field">
-            <label>From</label>
-            <input type="date"
-                   name="dateFrom"
-                   value="{{ $dateFrom ?? '' }}">
+            <label for="service-order-search">
+                Search orders
+            </label>
+
+            <input
+                id="service-order-search"
+                type="text"
+                name="search"
+                placeholder="Search by title, client, employee or service..."
+                value="{{ $search ?? '' }}"
+            >
         </div>
 
+
         <div class="filter-field">
-            <label>To</label>
-            <input type="date"
-                   name="dateTo"
-                   value="{{ $dateTo ?? '' }}">
+            <label for="order-status">
+                Status
+            </label>
+
+            <select
+                id="order-status"
+                name="status"
+            >
+                <option value="">
+                    All statuses
+                </option>
+
+                <option
+                    value="New"
+                    {{ ($status ?? '') == 'New' ? 'selected' : '' }}
+                >
+                    New
+                </option>
+
+                <option
+                    value="In Progress"
+                    {{ ($status ?? '') == 'In Progress' ? 'selected' : '' }}
+                >
+                    In Progress
+                </option>
+
+                <option
+                    value="Completed"
+                    {{ ($status ?? '') == 'Completed' ? 'selected' : '' }}
+                >
+                    Completed
+                </option>
+
+                <option
+                    value="Cancelled"
+                    {{ ($status ?? '') == 'Cancelled' ? 'selected' : '' }}
+                >
+                    Cancelled
+                </option>
+            </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/serviceOrders" class="btn btn-secondary btn-clear">Clear</a>
+
+        <div class="filter-field">
+            <label for="date-from">
+                From
+            </label>
+
+            <input
+                id="date-from"
+                type="date"
+                name="dateFrom"
+                value="{{ $dateFrom ?? '' }}"
+            >
+        </div>
+
+
+        <div class="filter-field">
+            <label for="date-to">
+                To
+            </label>
+
+            <input
+                id="date-to"
+                type="date"
+                name="dateTo"
+                value="{{ $dateTo ?? '' }}"
+            >
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Search
+        </button>
+
+        <a
+            href="/serviceOrders"
+            class="btn btn-clear"
+        >
+            Clear
+        </a>
     </div>
 </form>
 
-<!-- This section displays a table of service orders with their details and actions. -->
-<table class="data-table service-orders-table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Client</th>
-            <th>Status</th>
-            <th>Deadline</th>
-            <th>Employees</th>
-            <th>Services</th>
-            <th>Total Cost</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        @foreach($models as $order)
-            <tr>
-                <td>{{ $order->Title }}</td>
+@if($models->count() > 0)
+    <div class="table-container">
+        <table class="data-table service-orders-list-table">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Employees</th>
+                    <th>Services</th>
+                    <th>Total Cost</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-                <td>
-                    {{ $order->client->FirstName ?? '' }}
-                    {{ $order->client->LastName ?? '' }}
-                </td>
+            <tbody>
+                @foreach($models as $order)
+                    <tr>
+                        <td>
+                            <div class="order-title-cell">
+                                <span class="record-title">
+                                    {{ $order->Title }}
+                                </span>
 
-                <td>{{ $order->Status }}</td>
-                <td>{{ $order->Deadline }}</td>
+                                <span class="order-reference">
+                                    Order ID: {{ $order->Id }}
+                                </span>
+                            </div>
+                        </td>
 
-                <td>
-                    @foreach($order->employees as $employee)
-                        <span class="badge">
-                            {{ $employee->FirstName }} {{ $employee->LastName }}
-                        </span>
-                    @endforeach
-                </td>
 
-                <td>
-                    @foreach($order->serviceItems as $serviceItem)
-                        <span class="badge">
-                            {{ $serviceItem->Title }}
-                        </span>
-                    @endforeach
-                </td>
+                        <td>
+                            <div class="order-client">
+                                @if($order->client)
+                                    <span class="order-client-name">
+                                        {{ $order->client->FirstName }}
+                                        {{ $order->client->LastName }}
+                                    </span>
 
-                <td>
-                    £{{ number_format($order->serviceItems->sum('Price'), 2) }}
-                </td>
+                                    <span class="order-reference">
+                                        Client ID: {{ $order->client->Id }}
+                                    </span>
+                                @else
+                                    <span class="order-client-empty">
+                                        No client assigned
+                                    </span>
+                                @endif
+                            </div>
+                        </td>
 
-                <td>
-                    <div class="actions">
 
-                        <a href="/serviceOrders/details/{{ $order->Id }}" class="btn btn-primary btn-small">
-                            Details
-                        </a>
+                        <td>
+                            <span class="status-badge status-{{ strtolower(str_replace(' ', '-', $order->Status)) }}">
+                                {{ $order->Status }}
+                            </span>
+                        </td>
 
-                        <a href="/serviceOrders/edit/{{ $order->Id }}" class="btn btn-secondary btn-small">
-                            Edit
-                        </a>
 
-                        <form method="POST" action="/serviceOrders/delete/{{ $order->Id }}" class="inline-form">
-                            @csrf
+                        <td>
+                            <span class="order-deadline">
+                                {{ $order->Deadline }}
+                            </span>
+                        </td>
 
-                            <button type="submit"
-                                    class="btn btn-danger btn-small"
-                                    onclick="return confirm('Are you sure you want to deactivate this service order?')">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
 
-<!-- This section displays pagination links for navigating through multiple pages of service orders. -->
-@if($models->count() == 0)
-    <p>No service orders found.</p>
+                        <td>
+                            <div class="assignment-list">
+                                @forelse($order->employees as $employee)
+                                    <span class="employee-badge">
+                                        {{ $employee->FirstName }}
+                                        {{ $employee->LastName }}
+                                    </span>
+                                @empty
+                                    <span class="assignment-empty">
+                                        No employees assigned
+                                    </span>
+                                @endforelse
+                            </div>
+                        </td>
+
+
+                        <td>
+                            <div class="assignment-list">
+                                @forelse($order->serviceItems as $serviceItem)
+                                    <span class="service-badge">
+                                        {{ $serviceItem->Title }}
+                                    </span>
+                                @empty
+                                    <span class="assignment-empty">
+                                        No services assigned
+                                    </span>
+                                @endforelse
+                            </div>
+                        </td>
+
+
+                        <td>
+                            <span class="order-total">
+                                £{{ number_format($order->serviceItems->sum('Price'), 2) }}
+                            </span>
+                        </td>
+
+
+                        <td class="table-actions">
+                            <div class="actions">
+                                <a
+                                    href="/serviceOrders/details/{{ $order->Id }}"
+                                    class="btn btn-primary btn-small"
+                                >
+                                    Details
+                                </a>
+
+                                <a
+                                    href="/serviceOrders/edit/{{ $order->Id }}"
+                                    class="btn btn-outline btn-small"
+                                >
+                                    Edit
+                                </a>
+
+                                <form
+                                    method="POST"
+                                    action="/serviceOrders/delete/{{ $order->Id }}"
+                                    class="inline-form"
+                                >
+                                    @csrf
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger btn-small"
+                                        onclick="return confirm('Are you sure you want to deactivate this service order?')"
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@else
+    <div class="list-empty-state">
+        <div class="list-empty-icon">
+            O
+        </div>
+
+        <h2>No service orders found</h2>
+
+        <p>
+            No service orders match the current search criteria.
+        </p>
+
+        <div class="page-actions">
+            @if(
+                !empty($search) ||
+                !empty($status) ||
+                !empty($dateFrom) ||
+                !empty($dateTo)
+            )
+                <a
+                    href="/serviceOrders"
+                    class="btn btn-outline"
+                >
+                    Clear Filters
+                </a>
+            @endif
+
+            <a
+                href="/serviceOrders/create"
+                class="btn btn-primary"
+            >
+                Add New Service Order
+            </a>
+        </div>
+    </div>
 @endif
 
 @endsection

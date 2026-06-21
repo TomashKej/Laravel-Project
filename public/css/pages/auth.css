@@ -1,0 +1,249 @@
+/*
+*--------------------------------------------------------------------------
+* Authentication pages
+*--------------------------------------------------------------------------
+*
+* This file is used only by:
+*
+* - login,
+* - registration,
+* - forgotten password,
+* - password reset.
+*
+* The auth-page class is added to the body through:
+*
+* @section('bodyClass', 'auth-page')
+*
+*/
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication page background
+*--------------------------------------------------------------------------
+*
+* A light radial gradient makes the authentication pages look less plain
+* while remaining suitable for a professional business application.
+*
+*/
+
+.auth-page {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.13),
+            transparent 35%
+        ),
+        var(--page-background);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Main container on authentication pages
+*--------------------------------------------------------------------------
+*
+* The standard white .site-main container is removed because the
+* authentication form has its own .auth-card container.
+*
+*/
+
+.auth-page .site-main {
+    max-width: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 50px 20px;
+
+    background: transparent;
+
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Authentication flash messages
+|--------------------------------------------------------------------------
+|
+| Keeps success and error messages aligned with the authentication card.
+|
+*/
+
+.auth-page .alert {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 0 0 18px;
+}
+
+/*
+*--------------------------------------------------------------------------
+* Authentication wrapper
+*--------------------------------------------------------------------------
+*
+* Limits the maximum width of the authentication card.
+*
+*/
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 480px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication card
+*--------------------------------------------------------------------------
+*/
+
+.auth-card {
+    width: 100%;
+
+    padding: 34px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-large);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Wider authentication card
+*--------------------------------------------------------------------------
+*
+* Used for forms containing more fields, such as registration
+* and password reset.
+*
+*/
+
+.auth-card-wide {
+    max-width: 540px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication card header
+*--------------------------------------------------------------------------
+*/
+
+.auth-card-header {
+    margin-bottom: 27px;
+
+    text-align: center;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication logo
+*--------------------------------------------------------------------------
+*
+* A simple text-based logo avoids requiring an external image file.
+*
+*/
+
+.auth-logo {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #1e40af
+        );
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 9px 20px rgba(37, 99, 235, 0.25);
+
+    font-size: 16px;
+    font-weight: 850;
+}
+
+.auth-card-header h1 {
+    margin: 7px 0 8px;
+
+    font-size: 29px;
+}
+
+.auth-card-header p {
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    font-size: 14px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication form
+*--------------------------------------------------------------------------
+*/
+
+.auth-form {
+    width: 100%;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Authentication footer
+*--------------------------------------------------------------------------
+*
+* Contains links such as:
+* - Forgotten password
+* - Register
+* - Return to login
+*
+*/
+
+.auth-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+
+    text-align: center;
+
+    border-top: 1px solid var(--border);
+}
+
+.auth-footer p {
+    margin: 12px 0 0;
+
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: var(--primary);
+
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}

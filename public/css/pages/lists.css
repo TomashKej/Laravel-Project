@@ -1,0 +1,1036 @@
+/*
+|--------------------------------------------------------------------------
+| List and index pages
+|--------------------------------------------------------------------------
+|
+| This file contains shared styles for pages which display collections
+| of records in tables.
+|
+| Examples:
+| - clients,
+| - employees,
+| - positions,
+| - service categories,
+| - service items,
+| - service orders,
+| - administration users.
+|
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| List page header
+|--------------------------------------------------------------------------
+|
+| Places the page title and the main action button next to each other.
+|
+*/
+
+.list-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-bottom: 24px;
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.list-page-heading {
+    max-width: 760px;
+}
+
+.list-page-heading h1 {
+    margin: 5px 0 7px;
+}
+
+.list-page-heading p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.list-page-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Simple list search
+|--------------------------------------------------------------------------
+|
+| Used when a list contains one search field and two action buttons.
+|
+*/
+
+.search-box.search-box-simple {
+    grid-template-columns:
+        minmax(260px, 1fr)
+        auto
+        auto;
+}
+
+.search-box.search-box-simple .filter-field {
+    min-width: 0;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Record title
+|--------------------------------------------------------------------------
+|
+| Highlights the main value in a table row.
+|
+*/
+
+.record-title {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-weight: 750;
+    line-height: 1.35;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Record description
+|--------------------------------------------------------------------------
+|
+| Used for secondary information underneath or next to a record title.
+|
+*/
+
+.record-description {
+    display: block;
+
+    max-width: 520px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Count badge
+|--------------------------------------------------------------------------
+|
+| Used to display values such as the number of assigned employees.
+|
+*/
+
+.count-badge {
+    min-width: 34px;
+    height: 28px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 10px;
+
+    color: var(--primary-dark);
+    background: var(--primary-light);
+
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Table actions column
+|--------------------------------------------------------------------------
+*/
+
+.table-actions {
+    min-width: 230px;
+}
+
+.table-actions .actions {
+    flex-wrap: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Empty list
+|--------------------------------------------------------------------------
+|
+| Displayed when the search does not return any records.
+|
+*/
+
+.list-empty-state {
+    padding: 42px 24px;
+
+    text-align: center;
+
+    background: var(--surface-secondary);
+
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-medium);
+}
+
+.list-empty-icon {
+    width: 46px;
+    height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 13px;
+
+    color: var(--primary-dark);
+    background: var(--primary-light);
+
+    border: 1px solid #bfdbfe;
+    border-radius: 50%;
+
+    font-size: 17px;
+    font-weight: 850;
+}
+
+.list-empty-state h2 {
+    margin-bottom: 5px;
+
+    font-size: 19px;
+}
+
+.list-empty-state p {
+    margin: 0;
+
+    font-size: 14px;
+}
+/*
+|--------------------------------------------------------------------------
+| Person table cell
+|--------------------------------------------------------------------------
+|
+| Used for clients and employees. The cell contains a simple avatar,
+| the person's full name and an optional secondary value.
+|
+*/
+
+.person-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 190px;
+}
+
+.person-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: var(--primary-dark);
+    background: var(--primary-light);
+
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: 0.3px;
+}
+
+.person-details {
+    min-width: 0;
+}
+
+.person-name {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 750;
+    line-height: 1.35;
+}
+
+.person-reference {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Contact details
+|--------------------------------------------------------------------------
+|
+| Displays an email address and telephone number in one table cell.
+|
+*/
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+
+    min-width: 190px;
+}
+
+.contact-link {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    color: var(--primary);
+
+    text-decoration: underline;
+}
+
+.contact-secondary {
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Location details
+|--------------------------------------------------------------------------
+*/
+
+.location-cell {
+    min-width: 130px;
+}
+
+.location-city {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.location-postcode {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Date value
+|--------------------------------------------------------------------------
+*/
+
+.date-value {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Position badge
+|--------------------------------------------------------------------------
+|
+| Displays the employee's current position in a clear and consistent way.
+|
+*/
+
+.position-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    color: #1e40af;
+    background: #dbeafe;
+
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Missing table value
+|--------------------------------------------------------------------------
+|
+| Used when an optional value is not available.
+|
+*/
+
+.table-value-empty {
+    color: var(--text-muted);
+
+    font-size: 12px;
+    font-style: italic;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Category table cell
+|--------------------------------------------------------------------------
+|
+| Displays a service category with a simple letter-based icon.
+|
+*/
+
+.category-cell {
+    min-width: 220px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #6b21a8;
+    background: #f3e8ff;
+
+    border: 1px solid #e9d5ff;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 850;
+}
+
+.category-details {
+    min-width: 0;
+}
+
+.category-reference {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Category description
+|--------------------------------------------------------------------------
+|
+| Limits very long descriptions whilst keeping the complete table layout
+| clear and readable.
+|
+*/
+
+.category-description {
+    display: block;
+
+    max-width: 650px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Service item cell
+|--------------------------------------------------------------------------
+|
+| Displays the service title together with a simple letter-based icon.
+|
+*/
+
+.service-item-cell {
+    min-width: 210px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.service-item-icon {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #0f766e;
+    background: #ccfbf1;
+
+    border: 1px solid #99f6e4;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 850;
+}
+
+.service-item-details {
+    min-width: 0;
+}
+
+.service-item-reference {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Service category badge
+|--------------------------------------------------------------------------
+|
+| Helps the user quickly recognise the category assigned to a service.
+|
+*/
+
+.service-category-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    color: #6b21a8;
+    background: #f3e8ff;
+
+    border: 1px solid #e9d5ff;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Service price
+|--------------------------------------------------------------------------
+|
+| Highlights the price without making it visually overpowering.
+|
+*/
+
+.service-price {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 78px;
+    padding: 6px 10px;
+
+    color: #166534;
+    background: #dcfce7;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Service description
+|--------------------------------------------------------------------------
+*/
+
+.service-description {
+    display: block;
+
+    max-width: 500px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Service orders list
+|--------------------------------------------------------------------------
+|
+| Styles used by the main service orders table.
+|
+| The table contains more information than the other list pages,
+| therefore several cells have their own presentation rules.
+|
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Service order title
+|--------------------------------------------------------------------------
+*/
+
+.order-title-cell {
+    min-width: 150px;
+}
+
+.order-reference {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Client information
+|--------------------------------------------------------------------------
+*/
+
+.order-client {
+    min-width: 145px;
+}
+
+.order-client-name {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.order-client-empty {
+    color: var(--text-muted);
+
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Deadline
+|--------------------------------------------------------------------------
+*/
+
+.order-deadline {
+    display: inline-flex;
+    align-items: center;
+
+    min-width: 115px;
+    padding: 6px 9px;
+
+    color: var(--text-secondary);
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Assigned records
+|--------------------------------------------------------------------------
+|
+| Employees and services are displayed as small badges inside a wrapping
+| container. This prevents them from appearing as one long line.
+|
+*/
+
+.assignment-list {
+    min-width: 145px;
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.employee-badge,
+.service-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border: 1px solid;
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.employee-badge {
+    color: #1d4ed8;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.service-badge {
+    color: #0f766e;
+    background: #f0fdfa;
+    border-color: #99f6e4;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Empty assignment value
+|--------------------------------------------------------------------------
+*/
+
+.assignment-empty {
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-style: italic;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Order total
+|--------------------------------------------------------------------------
+*/
+
+.order-total {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 82px;
+    padding: 6px 10px;
+
+    color: #166534;
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Service orders table
+|--------------------------------------------------------------------------
+*/
+
+.service-orders-list-table {
+    min-width: 1180px;
+}
+
+.service-orders-list-table td {
+    vertical-align: top;
+}
+
+.service-orders-list-table .table-actions {
+    min-width: 220px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Administration users table
+|--------------------------------------------------------------------------
+|
+| Styles used by the user management table in the administration panel.
+|
+*/
+
+.admin-users-table {
+    min-width: 1050px;
+}
+
+.admin-users-table td {
+    vertical-align: middle;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| User table cell
+|--------------------------------------------------------------------------
+|
+| Displays the user's initial, name and internal identifier.
+|
+*/
+
+.user-cell {
+    min-width: 190px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #6b21a8;
+    background: #f3e8ff;
+
+    border: 1px solid #e9d5ff;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 850;
+}
+
+.user-details {
+    min-width: 0;
+}
+
+.user-name {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 750;
+    line-height: 1.35;
+}
+
+.user-reference {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| User email address
+|--------------------------------------------------------------------------
+*/
+
+.user-email {
+    min-width: 200px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.user-email:hover {
+    color: var(--primary);
+
+    text-decoration: underline;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| User role badges
+|--------------------------------------------------------------------------
+*/
+
+.user-role {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    border: 1px solid;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+.user-role-admin {
+    color: #6b21a8;
+    background: #f3e8ff;
+    border-color: #e9d5ff;
+}
+
+.user-role-standard {
+    color: #475569;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| User status badges
+|--------------------------------------------------------------------------
+*/
+
+.user-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    border: 1px solid;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+.user-status::before {
+    width: 7px;
+    height: 7px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    content: "";
+}
+
+.user-status-active {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.user-status-active::before {
+    background: #22c55e;
+}
+
+.user-status-inactive {
+    color: #991b1b;
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.user-status-inactive::before {
+    background: #ef4444;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| User creation date
+|--------------------------------------------------------------------------
+*/
+
+.user-created-date {
+    min-width: 140px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Administration actions
+|--------------------------------------------------------------------------
+|
+| The administration table contains more actions than standard CRUD tables.
+| Buttons are allowed to wrap to another row when necessary.
+|
+*/
+
+.admin-table-actions {
+    min-width: 330px;
+}
+
+.admin-table-actions .actions {
+    flex-wrap: wrap;
+}

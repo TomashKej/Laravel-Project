@@ -1,0 +1,479 @@
+/*
+*--------------------------------------------------------------------------
+* Responsive styles
+*--------------------------------------------------------------------------
+*
+* This file contains adjustments for:
+*
+* - smaller desktop screens,
+* - tablets,
+* - mobile phones.
+*
+* It is imported last so that these rules can override the default
+* desktop styles when necessary.
+*
+*/
+
+
+/*
+*--------------------------------------------------------------------------
+* Smaller desktop screens and tablets
+*--------------------------------------------------------------------------
+*/
+
+@media (max-width: 1100px) {
+    /*
+    *--------------------------------------------------------------------------
+    * Dashboard grids
+    *--------------------------------------------------------------------------
+    *
+    * Changes four columns into two columns.
+    *
+    */
+
+    .dashboard-grid,
+    .status-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Search filters
+    *--------------------------------------------------------------------------
+    *
+    * Changes the search form into a two-column layout.
+    *
+    */
+
+    .search-box {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .search-box .btn {
+        width: 100%;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Welcome section
+    *--------------------------------------------------------------------------
+    *
+    * Places the text and information card underneath each other.
+    *
+    */
+
+    .welcome-hero {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .welcome-information-card {
+        max-width: 650px;
+    }
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Tablets
+*--------------------------------------------------------------------------
+*/
+
+@media (max-width: 800px) {
+    /*
+    *--------------------------------------------------------------------------
+    * Header
+    *--------------------------------------------------------------------------
+    */
+
+    header {
+        padding: 18px 20px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Navigation
+    *--------------------------------------------------------------------------
+    *
+    * Places navigation sections underneath each other.
+    *
+    */
+
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 12px 20px;
+    }
+
+    .nav-left,
+    .nav-right {
+        width: 100%;
+
+        flex-wrap: wrap;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Main content
+    *--------------------------------------------------------------------------
+    */
+
+    .site-main {
+        width: calc(100% - 24px);
+
+        margin: 20px auto;
+        padding: 22px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Dashboard header
+    *--------------------------------------------------------------------------
+    */
+
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-header-actions {
+        width: 100%;
+    }
+
+    .dashboard-header-actions .btn {
+        width: 100%;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Summary card
+    *--------------------------------------------------------------------------
+    */
+
+    .summary-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Welcome page
+    *--------------------------------------------------------------------------
+    */
+
+    .welcome-hero {
+        min-height: auto;
+
+        padding: 20px 5px;
+    }
+
+    .welcome-hero-content h1 {
+        font-size: 38px;
+        letter-spacing: -1px;
+    }
+
+    .welcome-description {
+        font-size: 16px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Details pages
+    *--------------------------------------------------------------------------
+    *
+    * Changes the two-column details layout into one column.
+    *
+    */
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Mobile phones
+*--------------------------------------------------------------------------
+*/
+
+@media (max-width: 600px) {
+    /*
+    *--------------------------------------------------------------------------
+    * Main content
+    *--------------------------------------------------------------------------
+    */
+
+    .site-main {
+        width: calc(100% - 16px);
+
+        margin: 12px auto;
+        padding: 17px;
+
+        border-radius: 12px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Typography
+    *--------------------------------------------------------------------------
+    */
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Navigation
+    *--------------------------------------------------------------------------
+    */
+
+    nav a,
+    .nav-button {
+        padding: 7px 9px;
+
+        font-size: 13px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Grid layouts
+    *--------------------------------------------------------------------------
+    *
+    * All important grids use a single column on mobile devices.
+    *
+    */
+
+    .dashboard-grid,
+    .status-grid,
+    .search-box,
+    .checkbox-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Dashboard cards
+    *--------------------------------------------------------------------------
+    */
+
+    .dashboard-card {
+        padding: 17px;
+    }
+
+    .summary-card {
+        padding: 20px;
+    }
+
+    .summary-value {
+        font-size: 33px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Page actions
+    *--------------------------------------------------------------------------
+    *
+    * Makes action buttons fill the available width.
+    *
+    */
+
+    .page-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .page-actions .btn {
+        width: 100%;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Authentication pages
+    *--------------------------------------------------------------------------
+    */
+
+    .auth-page .site-main {
+        padding: 28px 12px;
+    }
+
+    .auth-card {
+        padding: 24px 19px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Welcome page
+    *--------------------------------------------------------------------------
+    */
+
+    .welcome-information-card {
+        padding: 23px;
+    }
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Tables
+    *--------------------------------------------------------------------------
+    */
+
+    .table-container {
+        border-radius: 8px;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| Header and navigation responsiveness
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 1100px) {
+    .navbar-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+
+        padding: 10px 0;
+    }
+
+    .nav-left,
+    .nav-right {
+        width: 100%;
+
+        flex-wrap: wrap;
+    }
+
+    .nav-right {
+        justify-content: flex-end;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .site-header {
+        padding: 17px 18px;
+    }
+
+    .header-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .site-header h2 {
+        font-size: 18px;
+    }
+
+    .site-header p {
+        display: none;
+    }
+
+    .site-navbar {
+        padding: 0 14px;
+    }
+
+    .navbar-content {
+        padding: 9px 0;
+    }
+
+    .nav-left,
+    .nav-right {
+        justify-content: flex-start;
+    }
+
+    .nav-link,
+    .nav-button {
+        min-height: 35px;
+
+        padding: 7px 9px;
+
+        font-size: 12px;
+    }
+
+    .nav-user-details {
+        display: none;
+    }
+
+    .site-footer {
+        padding: 0 18px;
+    }
+
+    .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+
+        padding: 18px 0 22px;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| List pages responsiveness
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 800px) {
+    /*
+    | Places the page title and action button underneath each other.
+    */
+
+    .list-page-header {
+        flex-direction: column;
+    }
+
+    .list-page-actions {
+        width: 100%;
+    }
+
+    .list-page-actions .btn {
+        width: 100%;
+    }
+
+    /*
+    | Allows table action buttons to move onto another line.
+    */
+
+    .table-actions .actions {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 600px) {
+    /*
+    | Changes the simple search form into one column.
+    */
+
+    .search-box.search-box-simple {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box.search-box-simple .btn {
+        width: 100%;
+    }
+}

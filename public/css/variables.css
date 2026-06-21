@@ -1,0 +1,136 @@
+/*
+*--------------------------------------------------------------------------
+* CSS variables
+*--------------------------------------------------------------------------
+*
+* This file stores the main colours, shadows, borders and border radiuses.
+*
+* For example, changing --primary will update the main application colour
+* wherever that variable is used.
+*
+*/
+
+:root {
+    /*
+    *--------------------------------------------------------------------------
+    * Main application colours
+    *--------------------------------------------------------------------------
+    */
+
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --secondary: #475569;
+    --secondary-dark: #334155;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Success colours
+    *--------------------------------------------------------------------------
+    *
+    * Used for successful messages, completed orders and positive values.
+    *
+    */
+
+    --success: #15803d;
+    --success-background: #f0fdf4;
+    --success-border: #bbf7d0;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Danger colours
+    *--------------------------------------------------------------------------
+    *
+    * Used for validation errors, delete buttons and overdue orders.
+    *
+    */
+
+    --danger: #dc2626;
+    --danger-dark: #b91c1c;
+    --danger-background: #fef2f2;
+    --danger-border: #fecaca;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Warning colours
+    *--------------------------------------------------------------------------
+    *
+    * Used for warnings and orders that are currently in progress.
+    *
+    */
+
+    --warning: #d97706;
+    --warning-background: #fffbeb;
+    --warning-border: #fde68a;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Background colours
+    *--------------------------------------------------------------------------
+    */
+
+    --page-background: #f1f5f9;
+
+    --surface: #ffffff;
+    --surface-secondary: #f8fafc;
+
+    --header-background: #0f172a;
+    --navbar-background: #1e293b;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Text colours
+    *--------------------------------------------------------------------------
+    */
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Border colours
+    *--------------------------------------------------------------------------
+    */
+
+    --border: #e2e8f0;
+    --border-dark: #cbd5e1;
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Shadows
+    *--------------------------------------------------------------------------
+    *
+    * Different shadow sizes are used depending on the importance
+    * and size of an element.
+    *
+    */
+
+    --shadow-small:
+        0 2px 8px rgba(15, 23, 42, 0.06);
+
+    --shadow-medium:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-large:
+        0 20px 45px rgba(15, 23, 42, 0.12);
+
+
+    /*
+    *--------------------------------------------------------------------------
+    * Border radiuses
+    *--------------------------------------------------------------------------
+    */
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+    --radius-large: 16px;
+}

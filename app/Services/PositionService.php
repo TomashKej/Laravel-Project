@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+/**
+ * Service class for managing Position entities.
+ */
 class PositionService
 {
     public function getAll(?string $search = null): Collection

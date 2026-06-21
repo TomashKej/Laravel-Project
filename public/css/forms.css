@@ -1,0 +1,344 @@
+/*
+*--------------------------------------------------------------------------
+* Forms
+*--------------------------------------------------------------------------
+*
+* This file contains shared styles for:
+*
+* - CRUD forms,
+* - authentication forms,
+* - validation messages,
+* - password rules,
+* - search forms,
+* - filter fields,
+* - checkbox lists.
+*
+*/
+
+
+/*
+*--------------------------------------------------------------------------
+* Basic form
+*--------------------------------------------------------------------------
+*/
+
+form {
+    margin: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Form group
+*--------------------------------------------------------------------------
+*
+* Groups a label, input and validation message together.
+*
+*/
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Labels
+*--------------------------------------------------------------------------
+*/
+
+label {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Inputs, text areas and select fields
+*--------------------------------------------------------------------------
+*/
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    color: var(--text-primary);
+    background: var(--surface);
+
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+input {
+    min-height: 43px;
+}
+
+textarea {
+    min-height: 120px;
+
+    /*
+    * Allows the text area to be resized vertically without breaking
+    * the width of the page layout.
+    */
+
+    resize: vertical;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Focus state
+*--------------------------------------------------------------------------
+*
+* Makes the currently selected field more visible.
+*
+*/
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Placeholder text
+*--------------------------------------------------------------------------
+*/
+
+input::placeholder,
+textarea::placeholder {
+    color: #94a3b8;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Disabled fields
+*--------------------------------------------------------------------------
+*/
+
+.input-disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    color: var(--text-muted);
+    background: #f1f5f9;
+
+    cursor: not-allowed;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Validation errors
+*--------------------------------------------------------------------------
+*
+* Used by Laravel validation messages displayed through @error.
+*
+*/
+
+.error {
+    display: flex;
+    align-items: center;
+
+    margin-top: 7px;
+
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Password rules
+*--------------------------------------------------------------------------
+*
+* Displays password requirements below a password input.
+*
+*/
+
+.password-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin-top: 9px;
+    padding: 11px 13px;
+
+    color: #1e3a8a;
+    background: var(--primary-light);
+
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.password-rules strong {
+    color: #1e40af;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Search form
+*--------------------------------------------------------------------------
+*/
+
+.search-form {
+    margin: 20px 0 25px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Search and filter box
+*--------------------------------------------------------------------------
+*
+* Default service order filter layout:
+*
+* 1. Search text
+* 2. Status
+* 3. Date from
+* 4. Date to
+* 5. Search button
+* 6. Clear button
+*
+*/
+
+.search-box {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 1.8fr)
+        minmax(150px, 180px)
+        minmax(145px, 160px)
+        minmax(145px, 160px)
+        auto
+        auto;
+
+    align-items: end;
+    gap: 14px;
+
+    padding: 18px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.search-box input,
+.search-box select {
+    margin: 0;
+}
+
+.search-box .btn {
+    min-height: 43px;
+
+    white-space: nowrap;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Individual filter field
+*--------------------------------------------------------------------------
+*/
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-field label {
+    margin-bottom: 5px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Checkbox list
+*--------------------------------------------------------------------------
+*
+* Used when assigning multiple employees or service items to an order.
+*
+*/
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Checkbox item
+*--------------------------------------------------------------------------
+*/
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 12px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    font-weight: 500;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    min-height: auto;
+
+    margin: 0;
+
+    /*
+    * Changes the selected checkbox colour to the application's
+    * primary colour.
+    */
+
+    accent-color: var(--primary);
+}

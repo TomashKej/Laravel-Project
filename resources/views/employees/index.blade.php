@@ -1,73 +1,203 @@
 @extends('main')
 
+@section('title', 'Employees')
+
 @section('content')
 
-<h1>Employees</h1>
+<section class="list-page-header">
+    <div class="list-page-heading">
+        <span class="section-label">
+            Employee Management
+        </span>
 
-<!-- This section displays a list of employees with options to add, edit, or delete them. It also includes a search form to filter employees based on the search query. -->
-<div class="page-actions">
-    <a href="/employees/create" class="btn btn-primary">Add Employee</a>
-</div>
+        <h1>Employees</h1>
 
-<form method="GET" action="/employees" class="search-form">
-    <div class="search-box employees-search-box">
-        <input type="text" name="search" placeholder="Search employees..." value="{{ $search ?? '' }}">
-        <button type="submit" class="btn btn-primary">Search</button>
-        <a href="/employees" class="btn btn-clear">Clear</a>
+        <p>
+            Manage employee records, contact information and assigned positions.
+        </p>
+    </div>
+
+    <div class="list-page-actions">
+        <a
+            href="/employees/create"
+            class="btn btn-primary"
+        >
+            Add New Employee
+        </a>
+    </div>
+</section>
+
+
+<form
+    method="GET"
+    action="/employees"
+    class="search-form"
+>
+    <div class="search-box search-box-simple">
+        <div class="filter-field">
+            <label for="employee-search">
+                Search employees
+            </label>
+
+            <input
+                id="employee-search"
+                type="text"
+                name="search"
+                placeholder="Search by name, email, telephone or position..."
+                value="{{ $search ?? '' }}"
+            >
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Search
+        </button>
+
+        <a
+            href="/employees"
+            class="btn btn-clear"
+        >
+            Clear
+        </a>
     </div>
 </form>
 
-<!-- This table displays the list of employees with their details and actions to edit or delete them. -->
-<table>
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Position</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        @foreach($models as $employee)
-            <tr>
-                <td>{{ $employee->FirstName }}</td>
-                <td>{{ $employee->LastName }}</td>
-                <td>{{ $employee->Email }}</td>
-                <td>{{ $employee->Phone }}</td>
-                <td>{{ $employee->position->Title ?? $employee->Position }}</td>
-                <td>
-                    <div class="actions">
+@if($models->count() > 0)
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Contact Details</th>
+                    <th>Position</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-                        <a href="/employees/details/{{ $employee->Id }}" class="btn btn-primary btn-small">
-                            Details
-                        </a>
+            <tbody>
+                @foreach($models as $employee)
+                    <tr>
+                        <td>
+                            <div class="person-cell">
+                                <span class="person-avatar">
+                                    {{ strtoupper(substr($employee->FirstName, 0, 1)) }}
+                                    {{ strtoupper(substr($employee->LastName, 0, 1)) }}
+                                </span>
 
-                        <a href="/employees/edit/{{ $employee->Id }}" class="btn btn-secondary btn-small">
-                            Edit
-                        </a>
+                                <div class="person-details">
+                                    <span class="person-name">
+                                        {{ $employee->FirstName }}
+                                        {{ $employee->LastName }}
+                                    </span>
 
-                        <form method="POST" action="/employees/delete/{{ $employee->Id }}" class="inline-form">
-                            @csrf
+                                    <span class="person-reference">
+                                        Employee ID: {{ $employee->Id }}
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
 
-                            <button type="submit"
-                                    class="btn btn-danger btn-small"
-                                    onclick="return confirm('Are you sure you want to deactivate this employee?')">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+                        <td>
+                            <div class="contact-list">
+                                <a
+                                    href="mailto:{{ $employee->Email }}"
+                                    class="contact-link"
+                                >
+                                    {{ $employee->Email }}
+                                </a>
 
-<!-- This section displays a message when no employees are found. -->
-@if($models->count() == 0)
-    <p>No employees found.</p>
+                                <a
+                                    href="tel:{{ $employee->Phone }}"
+                                    class="contact-link contact-secondary"
+                                >
+                                    {{ $employee->Phone }}
+                                </a>
+                            </div>
+                        </td>
+
+                        <td>
+                            @if($employee->position || $employee->Position)
+                                <span class="position-badge">
+                                    {{ $employee->position->Title ?? $employee->Position }}
+                                </span>
+                            @else
+                                <span class="table-value-empty">
+                                    No position assigned
+                                </span>
+                            @endif
+                        </td>
+
+                        <td class="table-actions">
+                            <div class="actions">
+                                <a
+                                    href="/employees/details/{{ $employee->Id }}"
+                                    class="btn btn-primary btn-small"
+                                >
+                                    Details
+                                </a>
+
+                                <a
+                                    href="/employees/edit/{{ $employee->Id }}"
+                                    class="btn btn-outline btn-small"
+                                >
+                                    Edit
+                                </a>
+
+                                <form
+                                    method="POST"
+                                    action="/employees/delete/{{ $employee->Id }}"
+                                    class="inline-form"
+                                >
+                                    @csrf
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger btn-small"
+                                        onclick="return confirm('Are you sure you want to deactivate this employee?')"
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@else
+    <div class="list-empty-state">
+        <div class="list-empty-icon">
+            E
+        </div>
+
+        <h2>No employees found</h2>
+
+        <p>
+            No employees match the current search criteria.
+        </p>
+
+        <div class="page-actions">
+            @if(!empty($search))
+                <a
+                    href="/employees"
+                    class="btn btn-outline"
+                >
+                    Clear Search
+                </a>
+            @endif
+
+            <a
+                href="/employees/create"
+                class="btn btn-primary"
+            >
+                Add New Employee
+            </a>
+        </div>
+    </div>
 @endif
 
 @endsection

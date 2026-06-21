@@ -1,38 +1,67 @@
-<nav>
-    <div class="nav-left">
+<nav class="site-navbar">
+    <div class="navbar-content">
 
-        <a href="/">Home</a>
+        <div class="nav-left">
 
-        @auth
-            <a href="/clients">Clients</a>
-            <a href="/employees">Employees</a>
-            <a href="/positions">Positions</a>
-            <a href="/serviceCategories">Service Categories</a>
-            <a href="/serviceItems">Service Items</a>
-            <a href="/serviceOrders">Service Orders</a>
+            <!-- Home link -->
+            <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
 
-            
-            @if(Auth::user()->IsAdmin)
-                <a href="/admin/users">Admin Panel</a>
-            @endif
-        @endauth
-    </div>
+            @auth
+                <!-- Clients link -->
+                <a href="/clients" class="nav-link {{ request()->is('clients*') ? 'active' : '' }}">Clients</a>
 
-    <div class="nav-right">
-        @auth
-            <span class="nav-user">
-                Logged In User: {{ Auth::user()->name }}
-            </span>
+                <!-- Employees link -->
+                <a href="/employees" class="nav-link {{ request()->is('employees*') ? 'active' : '' }}">Employees</a>
 
-            <form method="POST" action="/logout" class="nav-form">
-                @csrf
-                <button type="submit" class="nav-button">Logout</button>
-            </form>
-        @endauth
+                <!-- Positions link -->
+                <a href="/positions" class="nav-link {{ request()->is('positions*') ? 'active' : '' }}">Positions</a>
 
-        @guest
-            <a href="/login">Login</a>
-            <a href="/forgotPassword">Forgot Password</a>
-        @endguest
+                <!-- Service categories link -->
+                <a href="/serviceCategories" class="nav-link {{ request()->is('serviceCategories*') ? 'active' : '' }}">Service Categories</a>
+
+                <!-- Service items link -->
+                <a href="/serviceItems" class="nav-link {{ request()->is('serviceItems*') ? 'active' : '' }}">Service Items</a>
+
+                <!-- Service orders link -->
+                <a href="/serviceOrders" class="nav-link {{ request()->is('serviceOrders*') ? 'active' : '' }}">Service Orders</a>
+
+                @if(Auth::user()->IsAdmin)
+                    <!-- Admin panel link -->
+                    <a href="/admin/users" class="nav-link nav-admin-link {{ request()->is('admin/users*') ? 'active' : '' }}">Admin Panel</a>
+                @endif
+            @endauth
+
+        </div>
+
+        <div class="nav-right">
+
+            @auth
+                <!-- Authenticated user information -->
+                <div class="nav-user">
+                    <span class="nav-user-avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+
+                    <span class="nav-user-details">
+                        <small>Signed in as</small>
+                        <strong>{{ Auth::user()->name }}</strong>
+                    </span>
+                </div>
+
+                <!-- Logout form -->
+                <form method="POST" action="/logout" class="nav-form">
+                    @csrf
+                    <button type="submit" class="nav-button">Logout</button>
+                </form>
+            @endauth
+
+            @guest
+                <!-- Login link -->
+                <a href="/login" class="nav-link {{ request()->is('login') ? 'active' : '' }}">Login</a>
+
+                <!-- Password recovery link -->
+                <a href="/forgotPassword" class="nav-link {{ request()->is('forgotPassword*') ? 'active' : '' }}">Forgot Password</a>
+            @endguest
+
+        </div>
+
     </div>
 </nav>

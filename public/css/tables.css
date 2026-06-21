@@ -1,0 +1,274 @@
+/*
+*--------------------------------------------------------------------------
+* Tables
+*--------------------------------------------------------------------------
+*
+* This file contains styles shared by:
+*
+* - standard CRUD tables,
+* - dashboard tables,
+* - service order tables.
+*
+*/
+
+
+/*
+*--------------------------------------------------------------------------
+* Table container
+*--------------------------------------------------------------------------
+*
+* The container allows wide tables to scroll horizontally on smaller
+* screens instead of breaking the page layout.
+*
+*/
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Basic table
+*--------------------------------------------------------------------------
+*/
+
+table {
+    width: 100%;
+    min-width: 760px;
+
+    border-collapse: collapse;
+
+    background: var(--surface);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Table cells
+*--------------------------------------------------------------------------
+*/
+
+th,
+td {
+    padding: 14px 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Table headings
+*--------------------------------------------------------------------------
+*/
+
+th {
+    color: var(--secondary-dark);
+    background: var(--surface-secondary);
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Table data
+*--------------------------------------------------------------------------
+*/
+
+td {
+    color: var(--text-secondary);
+
+    font-size: 14px;
+}
+
+td strong {
+    color: var(--text-primary);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Table row hover
+*--------------------------------------------------------------------------
+*
+* Highlights the current row when the user moves the pointer over it.
+*
+*/
+
+tbody tr {
+    transition:
+        background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Last table row
+*--------------------------------------------------------------------------
+*
+* Removes the bottom border from the final row.
+*
+*/
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Price cell
+*--------------------------------------------------------------------------
+*/
+
+.table-price {
+    color: var(--success);
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Overdue deadline
+*--------------------------------------------------------------------------
+*/
+
+.deadline-overdue {
+    color: var(--danger);
+
+    font-weight: 700;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Data table
+*--------------------------------------------------------------------------
+*/
+
+.data-table {
+    font-size: 14px;
+}
+
+.data-table th,
+.data-table td {
+    vertical-align: top;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Service orders table
+*--------------------------------------------------------------------------
+*
+* The service order table contains more information than other CRUD tables.
+* These rules give important columns a suitable minimum width.
+*
+*/
+
+.service-orders-table th,
+.service-orders-table td {
+    padding: 12px 10px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Order title column
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table th:nth-child(1),
+.service-orders-table td:nth-child(1) {
+    min-width: 130px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Date or deadline column
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table th:nth-child(4),
+.service-orders-table td:nth-child(4) {
+    min-width: 125px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Price column
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table th:nth-child(7),
+.service-orders-table td:nth-child(7) {
+    min-width: 85px;
+
+    white-space: nowrap;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Actions column
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table th:nth-child(8),
+.service-orders-table td:nth-child(8) {
+    min-width: 155px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Badges inside the service orders table
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table .badge {
+    max-width: 130px;
+
+    margin-bottom: 4px;
+
+    line-height: 1.2;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Action buttons inside the service orders table
+*--------------------------------------------------------------------------
+*/
+
+.service-orders-table .actions {
+    flex-wrap: nowrap;
+}
+
+.service-orders-table .btn-small {
+    padding: 6px 10px;
+}

@@ -1,0 +1,529 @@
+/*
+*--------------------------------------------------------------------------
+* Reusable components
+*--------------------------------------------------------------------------
+*
+* This file contains elements that are used on multiple pages:
+*
+* - buttons,
+* - action containers,
+* - alerts,
+* - badges,
+* - order status labels,
+* - detail cards,
+* - empty states.
+*
+*/
+
+
+/*
+*--------------------------------------------------------------------------
+* Basic button
+*--------------------------------------------------------------------------
+*/
+
+.btn {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 17px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    text-decoration: none;
+
+    /*
+    * Moves the button slightly upwards when the user hovers over it.
+    */
+
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    /*
+    * Returns the button to its original position when clicked.
+    */
+
+    transform: translateY(0);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Primary button
+*--------------------------------------------------------------------------
+*
+* Used for the main action on a page, for example:
+* Add, Save, Search or View Details.
+*
+*/
+
+.btn-primary {
+    color: #ffffff;
+    background: var(--primary);
+    border-color: var(--primary);
+
+    box-shadow:
+        0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Secondary button
+*--------------------------------------------------------------------------
+*/
+
+.btn-secondary {
+    color: #ffffff;
+    background: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+    color: #ffffff;
+    background: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Danger button
+*--------------------------------------------------------------------------
+*
+* Used for destructive actions such as deleting a record.
+*
+*/
+
+.btn-danger {
+    color: #ffffff;
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-danger:hover {
+    color: #ffffff;
+    background: var(--danger-dark);
+    border-color: var(--danger-dark);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Outline button
+*--------------------------------------------------------------------------
+*
+* Used for secondary actions which should be less prominent.
+*
+*/
+
+.btn-outline {
+    color: var(--secondary-dark);
+    background: var(--surface);
+    border-color: var(--border-dark);
+}
+
+.btn-outline:hover {
+    color: var(--primary-dark);
+    background: var(--primary-light);
+    border-color: #93c5fd;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Clear filters button
+*--------------------------------------------------------------------------
+*/
+
+.btn-clear {
+    color: var(--secondary-dark);
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+}
+
+.btn-clear:hover {
+    color: var(--text-primary);
+    background: #cbd5e1;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Button sizes
+*--------------------------------------------------------------------------
+*/
+
+.btn-small {
+    min-height: 34px;
+
+    padding: 6px 11px;
+
+    font-size: 13px;
+}
+
+.btn-block {
+    width: 100%;
+    min-height: 46px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Page actions
+*--------------------------------------------------------------------------
+*
+* Used for groups of buttons displayed above or below page content.
+*
+*/
+
+.page-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.page-actions-bottom {
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Table row actions
+*--------------------------------------------------------------------------
+*
+* Usually contains Edit, Details and Delete buttons.
+*
+*/
+
+.actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Inline form
+*--------------------------------------------------------------------------
+*
+* Prevents forms used for buttons from taking up the entire line.
+*
+*/
+
+.inline-form {
+    display: inline-flex;
+
+    margin: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Alerts
+*--------------------------------------------------------------------------
+*
+* Alerts display success and error messages returned by Laravel.
+*
+*/
+
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 24px;
+    padding: 14px 16px;
+
+    border: 1px solid;
+    border-radius: var(--radius-medium);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.alert-icon {
+    width: 28px;
+    height: 28px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Success alert
+*--------------------------------------------------------------------------
+*/
+
+.alert-success {
+    color: #166534;
+    background: var(--success-background);
+    border-color: var(--success-border);
+}
+
+.alert-success .alert-icon {
+    color: #ffffff;
+    background: var(--success);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Error alert
+*--------------------------------------------------------------------------
+*/
+
+.alert-error {
+    color: #991b1b;
+    background: var(--danger-background);
+    border-color: var(--danger-border);
+}
+
+.alert-error .alert-icon {
+    color: #ffffff;
+    background: var(--danger);
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Badges
+*--------------------------------------------------------------------------
+*
+* .badge is used for general information, such as assigned services.
+*
+* .status-badge is used for the current status of a service order.
+*
+*/
+
+.badge,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    color: #334155;
+    background: #e2e8f0;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* New order status
+*--------------------------------------------------------------------------
+*/
+
+.status-new {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* In-progress order status
+*--------------------------------------------------------------------------
+*/
+
+.status-in-progress {
+    color: #a16207;
+    background: #fef3c7;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Completed order status
+*--------------------------------------------------------------------------
+*/
+
+.status-completed {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Cancelled order status
+*--------------------------------------------------------------------------
+*/
+
+.status-cancelled {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Details card
+*--------------------------------------------------------------------------
+*
+* Used on pages which display the details of a single record.
+*
+*/
+
+.details-card {
+    padding: 24px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.details-card h2 {
+    margin-top: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Details grid
+*--------------------------------------------------------------------------
+*
+* Displays record information in two columns on larger screens.
+*
+*/
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+
+    margin: 18px 0;
+}
+
+.details-grid p {
+    margin: 5px 0 0;
+}
+
+.details-card hr {
+    height: 1px;
+
+    margin: 24px 0;
+
+    background: var(--border);
+    border: 0;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Total cost
+*--------------------------------------------------------------------------
+*/
+
+.total-cost {
+    color: var(--success);
+
+    text-align: right;
+}
+
+
+/*
+*--------------------------------------------------------------------------
+* Empty state
+*--------------------------------------------------------------------------
+*
+* Displayed when a table or dashboard section does not contain any records.
+*
+*/
+
+.empty-state {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: var(--surface-secondary);
+
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-medium);
+}
+
+.empty-state-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 13px;
+
+    color: var(--success);
+    background: var(--success-background);
+
+    border: 1px solid var(--success-border);
+    border-radius: 50%;
+
+    font-weight: 800;
+}
+
+.empty-state h3 {
+    margin: 0 0 5px;
+
+    font-size: 17px;
+}
+
+.empty-state p {
+    margin: 0;
+
+    font-size: 14px;
+}

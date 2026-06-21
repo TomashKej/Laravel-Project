@@ -1,47 +1,146 @@
 @extends('main')
 
+@section('title', 'Reset Password')
+
 @section('bodyClass', 'auth-page')
 
 @section('content')
 
-<div class="auth-card">
-    <h1>Reset Password</h1>
+<div class="auth-wrapper">
+    <div class="auth-card auth-card-wide">
+        <div class="auth-card-header">
+            <div class="auth-logo">
+                ✓
+            </div>
 
-    <form method="POST" action="/forgotPassword/reset">
-        @csrf
+            <span class="section-label">
+                Account recovery
+            </span>
 
-        <input type="hidden" name="email" value="{{ $email }}">
+            <h1>Reset Password</h1>
 
-        <label>Email</label>
-        <input type="email" value="{{ $email }}" disabled>
-
-        <label>Security Question</label>
-        <input type="text" value="{{ $securityQuestion }}" disabled>
-
-        <label>Security Answer</label>
-        <input type="password" name="SecurityAnswer" value="{{ old('SecurityAnswer') }}">
-
-        @error('SecurityAnswer')
-            <div class="error">{{ $message }}</div>
-        @enderror
-
-        <label>New Password</label>
-        <input type="password" name="password">
-
-        @error('password')
-            <div class="error">{{ $message }}</div>
-        @enderror
-
-        <label>Confirm New Password</label>
-        <input type="password" name="password_confirmation">
-
-        <div class="password-rules">
-            Password must contain at least 8 characters, uppercase and lowercase letters, number and symbol.
+            <p>
+                Answer your security question and create a new password
+                for your account.
+            </p>
         </div>
 
-        <button type="submit" class="btn btn-primary">Change Password</button>
-        <a href="/login" class="btn btn-secondary">Back to Login</a>
-    </form>
+        <form
+            method="POST"
+            action="/forgotPassword/reset"
+            class="auth-form"
+        >
+            @csrf
+
+            <input
+                type="hidden"
+                name="email"
+                value="{{ $email }}"
+            >
+
+            <div class="form-group">
+                <label for="display-email">
+                    Email address
+                </label>
+
+                <input
+                    id="display-email"
+                    type="email"
+                    value="{{ $email }}"
+                    disabled
+                    class="input-disabled"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="security-question">
+                    Security question
+                </label>
+
+                <input
+                    id="security-question"
+                    type="text"
+                    value="{{ $securityQuestion }}"
+                    disabled
+                    class="input-disabled"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="SecurityAnswer">
+                    Security answer
+                </label>
+
+                <input
+                    id="SecurityAnswer"
+                    type="password"
+                    name="SecurityAnswer"
+                    value="{{ old('SecurityAnswer') }}"
+                    placeholder="Enter your security answer"
+                    autocomplete="off"
+                >
+
+                @error('SecurityAnswer')
+                    <div class="error">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    New password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your new password"
+                    autocomplete="new-password"
+                >
+
+                @error('password')
+                    <div class="error">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation">
+                    Confirm new password
+                </label>
+
+                <input
+                    id="password_confirmation"
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Enter your new password again"
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <div class="password-rules">
+                <strong>Password requirements</strong>
+
+                <span>
+                    Use at least 8 characters, including uppercase and lowercase
+                    letters, a number and a special character.
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Change Password
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <a href="/login">
+                ← Back to Login
+            </a>
+        </div>
+    </div>
 </div>
 
 @endsection
